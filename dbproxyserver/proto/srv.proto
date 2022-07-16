@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "model.proto";
+
+package backend;
+
+option go_package = "../backend";
+
+service DBProxySrv {
+  rpc DescribeUserList (DescribeUserListRequest) returns (DescribeUserListResponse) {}
+}
