@@ -1,0 +1,3 @@
+2022-07-17 10:06:42.211796Z	warn	base	config/default.go:358	no IP or interface name configured
+2022-07-17 10:07:14.880410Z	warn	base	config/default.go:358	no IP or interface name configured
+2022-07-17 10:33:39.307932Z	warn	base	config/default.go:358	no IP or interface name configured

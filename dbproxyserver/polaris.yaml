@@ -1,4 +1,11 @@
 global:
+  enable: true
   serverConnector:
+    addresses:
+      - 127.0.0.1:8091
+
+config:
+  enable: true
+  configConnector:
     addresses:
       - 127.0.0.1:8091

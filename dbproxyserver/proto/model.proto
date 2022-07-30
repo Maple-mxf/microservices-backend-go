@@ -2,6 +2,7 @@ syntax = "proto3";
 option go_package = "../backend";
 
 package backend;
+//import "validate/validate.proto";
 
 message DescribeUserListRequest{
   int64 pageNum = 1;

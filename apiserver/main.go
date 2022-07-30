@@ -4,15 +4,15 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	_ "github.com/polarismesh/grpc-go-polaris"
+	"log"
+	"time"
+
+	"microservices-backend-go/backend"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"log"
-	"microservices-backend-go/backend"
-)
 
-const (
-	listenPort = 16011
+	_ "github.com/polarismesh/grpc-go-polaris"
 )
 
 func main() {
@@ -28,9 +28,18 @@ func main() {
 	defer conn.Close()
 	dbProxy := backend.NewDBProxySrvClient(conn)
 
-	resp, err := dbProxy.DescribeUserList(ctx, &backend.DescribeUserListRequest{})
-	log.Printf("send message, resp (%v), err(%v)", resp, err)
+	for i := 0; i < 4; i++ {
+		start := time.Now().Unix()
+		resp, err := dbProxy.DescribeUserList(ctx, &backend.DescribeUserListRequest{})
+		log.Printf("send message, resp (%v), err(%v)", resp, err)
 
-	bys, _ := json.Marshal(resp.GetUserList())
-	fmt.Println(string(bys))
+		bys, _ := json.Marshal(resp.GetUserList())
+		fmt.Println(string(bys))
+		fmt.Println(time.Now().Unix() - start)
+	}
+}
+
+func compute(a int, b int) int {
+
+	return a + b
 }

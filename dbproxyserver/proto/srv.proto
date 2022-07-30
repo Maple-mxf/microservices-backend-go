@@ -1,10 +1,16 @@
 syntax = "proto3";
-import "model.proto";
 
 package backend;
 
 option go_package = "../backend";
 
+import "model.proto";
+import "google/api/httpbody.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
 service DBProxySrv {
-  rpc DescribeUserList (DescribeUserListRequest) returns (DescribeUserListResponse) {}
+
+  rpc DescribeUserList (DescribeUserListRequest) returns (DescribeUserListResponse) {
+  }
 }
